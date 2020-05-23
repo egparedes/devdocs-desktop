@@ -1,3 +1,8 @@
 *pycache*
 *ui~
 *ui#
+*.env
+*.venv
+*.egg-info
+build/*
+dist/*

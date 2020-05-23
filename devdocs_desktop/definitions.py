@@ -1,11 +1,8 @@
-#! /usr/bin/python
-
 import os
 import gi
 import sys
 import json
 import dbus
-import signal
 import argparse
 import webbrowser
 import dbus.service
@@ -479,16 +476,3 @@ class DevdocsDesktopService(dbus.service.Object):
     self.app.search_term(term)
     self.app.window.present_with_time(Gdk.CURRENT_TIME)
 
-
-if __name__ == '__main__':
-  DBusGMainLoop(set_as_default=True)
-  signal.signal(signal.SIGINT, signal.SIG_DFL)
-
-  if dbus.SessionBus().request_name(BUS_NAME) != dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
-    devdocs = dbus.SessionBus().get_object(BUS_NAME, BUS_PATH)
-    method  = devdocs.get_dbus_method('search')
-    method(sys.argv)
-  else:
-    devdocs = DevdocsDesktop()
-    service = DevdocsDesktopService(devdocs)
-    devdocs.run()

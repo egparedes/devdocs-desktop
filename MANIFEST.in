@@ -1,0 +1,9 @@
+include *.md
+include *.rst
+include *.toml
+include *.txt
+include *.yaml
+graft devdocs_desktop/icons
+graft devdocs_desktop/scripts
+graft devdocs_desktop/styles
+graft devdocs_desktop/ui
